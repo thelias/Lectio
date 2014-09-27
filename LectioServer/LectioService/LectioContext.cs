@@ -35,6 +35,12 @@ namespace LectioService
 
         #region Database Tables
 
+        public DbSet<Video> Videos { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Course> Courses { get; set; } 
+        
         #endregion
     }
 }

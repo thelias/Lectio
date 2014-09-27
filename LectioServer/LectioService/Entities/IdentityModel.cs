@@ -31,6 +31,11 @@ namespace LectioService.Entities
         public string LastName { get; set; }
         public string ProfileUrl { get; set; }
 
+        public virtual IdentityRole Role { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Course> Classes { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
