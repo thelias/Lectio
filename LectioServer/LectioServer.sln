@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LectioServer", "LectioServer\LectioServer.csproj", "{A71A5934-8F24-4B3F-A4FE-C0B087185CD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{E713959B-4A4F-4610-BB38-84FFF01B205D}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{2E029FDB-87AB-414D-9C76-39383771663B}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\LectioServer-WAWS-dev.json = PublishScripts\Configurations\LectioServer-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LectioService", "LectioService\LectioService.csproj", "{54F6A28B-4D72-4B53-B6BE-FDC77FB19696}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{348BBD27-3076-4BA2-81E7-F8BED23CD927}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A71A5934-8F24-4B3F-A4FE-C0B087185CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71A5934-8F24-4B3F-A4FE-C0B087185CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71A5934-8F24-4B3F-A4FE-C0B087185CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71A5934-8F24-4B3F-A4FE-C0B087185CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F6A28B-4D72-4B53-B6BE-FDC77FB19696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F6A28B-4D72-4B53-B6BE-FDC77FB19696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F6A28B-4D72-4B53-B6BE-FDC77FB19696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F6A28B-4D72-4B53-B6BE-FDC77FB19696}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E029FDB-87AB-414D-9C76-39383771663B} = {E713959B-4A4F-4610-BB38-84FFF01B205D}
+	EndGlobalSection
+EndGlobal
