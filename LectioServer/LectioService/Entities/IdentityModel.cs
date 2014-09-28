@@ -34,7 +34,10 @@ namespace LectioService.Entities
         public virtual IdentityRole Role { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Course> Classes { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Comment> Comments { get; set; } 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

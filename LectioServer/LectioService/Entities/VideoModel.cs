@@ -16,13 +16,22 @@ namespace LectioService.Entities
     {
         public int VideoId { get; set; }
 
-        public string Url { get; set; }
+        public string VideoName { get; set; }
+
+        public string VideoUrl { get; set; }
+
+        public string ThumbnailUrl { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime TimeStamp { get; set; }
 
+        [ForeignKey("Course")]
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
+
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

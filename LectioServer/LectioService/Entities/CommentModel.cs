@@ -16,9 +16,13 @@ namespace LectioService.Entities
     {
         public int CommentId { get; set; }
 
+        [ForeignKey("Video")]
         public int VideoId { get; set; }
+        public virtual Video Video { get; set; }
 
-        public int UserId { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public string CommentText { get; set; }
     }

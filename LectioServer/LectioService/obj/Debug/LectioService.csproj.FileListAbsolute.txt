@@ -56,3 +56,5 @@ C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioSe
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioService.csproj.GenerateResource.Cache
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioService.dll
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioService.pdb
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.CreatedTables.resources
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.UpdatedModel.resources

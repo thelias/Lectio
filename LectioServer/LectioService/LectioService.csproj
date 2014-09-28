@@ -74,14 +74,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\ClassesModel.cs" />
+    <Compile Include="Entities\CourseModel.cs" />
     <Compile Include="Entities\CommentModel.cs" />
     <Compile Include="Entities\VideoModel.cs" />
+    <Compile Include="Interfaces\ICourseService.cs" />
     <Compile Include="LectioContext.cs" />
     <Compile Include="Entities\IdentityModel.cs" />
     <Compile Include="Migrations\201409272020017_InitialCreate.cs" />
     <Compile Include="Migrations\201409272020017_InitialCreate.Designer.cs">
       <DependentUpon>201409272020017_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409272238354_CreatedTables.cs" />
+    <Compile Include="Migrations\201409272238354_CreatedTables.Designer.cs">
+      <DependentUpon>201409272238354_CreatedTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409280005448_UpdatedModel.cs" />
+    <Compile Include="Migrations\201409280005448_UpdatedModel.Designer.cs">
+      <DependentUpon>201409280005448_UpdatedModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +103,15 @@
     <EmbeddedResource Include="Migrations\201409272020017_InitialCreate.resx">
       <DependentUpon>201409272020017_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409272238354_CreatedTables.resx">
+      <DependentUpon>201409272238354_CreatedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409280005448_UpdatedModel.resx">
+      <DependentUpon>201409280005448_UpdatedModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
