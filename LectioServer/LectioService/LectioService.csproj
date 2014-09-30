@@ -74,44 +74,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\CourseModel.cs" />
+    <Compile Include="Entities\LectureModel.cs" />
     <Compile Include="Entities\CommentModel.cs" />
     <Compile Include="Entities\VideoModel.cs" />
-    <Compile Include="Interfaces\ICourseService.cs" />
+    <Compile Include="Interfaces\ILectureService.cs" />
     <Compile Include="LectioContext.cs" />
     <Compile Include="Entities\IdentityModel.cs" />
-    <Compile Include="Migrations\201409272020017_InitialCreate.cs" />
-    <Compile Include="Migrations\201409272020017_InitialCreate.Designer.cs">
-      <DependentUpon>201409272020017_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201409300154311_InitialCreate.cs" />
+    <Compile Include="Migrations\201409300154311_InitialCreate.Designer.cs">
+      <DependentUpon>201409300154311_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201409272238354_CreatedTables.cs" />
-    <Compile Include="Migrations\201409272238354_CreatedTables.Designer.cs">
-      <DependentUpon>201409272238354_CreatedTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201409280005448_UpdatedModel.cs" />
-    <Compile Include="Migrations\201409280005448_UpdatedModel.Designer.cs">
-      <DependentUpon>201409280005448_UpdatedModel.cs</DependentUpon>
+    <Compile Include="Migrations\201409300158200_UpdateTimeStamp.cs" />
+    <Compile Include="Migrations\201409300158200_UpdateTimeStamp.Designer.cs">
+      <DependentUpon>201409300158200_UpdateTimeStamp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LectureService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201409272020017_InitialCreate.resx">
-      <DependentUpon>201409272020017_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201409300154311_InitialCreate.resx">
+      <DependentUpon>201409300154311_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201409272238354_CreatedTables.resx">
-      <DependentUpon>201409272238354_CreatedTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201409300158200_UpdateTimeStamp.resx">
+      <DependentUpon>201409300158200_UpdateTimeStamp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201409280005448_UpdatedModel.resx">
-      <DependentUpon>201409280005448_UpdatedModel.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

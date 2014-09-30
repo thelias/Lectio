@@ -7,13 +7,13 @@ namespace LectioService.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class UpdatedModel : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatedModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201409280005448_UpdatedModel"; }
+            get { return "201409300154311_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

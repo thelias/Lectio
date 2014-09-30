@@ -7,7 +7,7 @@
         "databases": [
             {
                 "connectionStringName": "DefaultConnection",
-                "databaseName": "LectioServer_db",
+                "databaseName": "Lectio",
                 "serverName": "md1dy5ub67",
                 "user": "czifro",
                 "password": "",

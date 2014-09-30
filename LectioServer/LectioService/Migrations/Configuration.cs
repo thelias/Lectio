@@ -1,5 +1,3 @@
-using Microsoft.AspNet.Identity.EntityFramework;
-
 namespace LectioService.Migrations
 {
     using System;
@@ -28,12 +26,6 @@ namespace LectioService.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            context.Roles.AddOrUpdate(
-               r => r.Name,
-               new IdentityRole { Name = "Student"},
-               new IdentityRole { Name = "Instructor"}
-                );
         }
     }
 }

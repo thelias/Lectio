@@ -34,7 +34,7 @@ namespace LectioService.Entities
         public virtual IdentityRole Role { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Lecture> Lectures { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Comment> Comments { get; set; } 

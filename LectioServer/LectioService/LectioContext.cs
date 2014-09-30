@@ -39,7 +39,7 @@ namespace LectioService
 
         public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<Course> Courses { get; set; } 
+        public DbSet<Lecture> Lectures { get; set; } 
         
         #endregion
     }

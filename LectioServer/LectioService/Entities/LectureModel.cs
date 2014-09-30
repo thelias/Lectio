@@ -12,12 +12,12 @@ using Newtonsoft.Json;
 
 namespace LectioService.Entities
 {
-    public class Course
+    public class Lecture
     {
-        public int CourseId { get; set; }
+        public int LectureId { get; set; }
 
-        [Display(Name = "Class Course")]
-        public string CourseName { get; set; }
+        [Display(Name = "Lecture Name")]
+        public string LectureName { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<ApplicationUser> Users { get; set; }

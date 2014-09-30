@@ -25,8 +25,6 @@ P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Newtonsoft.Json.xml
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.csprojResolveAssemblyReference.cache
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.dll
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.pdb
-P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.InitialCreate.resources
-P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.csproj.GenerateResource.Cache
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\bin\Debug\LectioService.dll.config
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\bin\Debug\LectioService.dll
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\bin\Debug\LectioService.pdb
@@ -56,5 +54,6 @@ C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioSe
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioService.csproj.GenerateResource.Cache
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioService.dll
 C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioService.pdb
-P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.CreatedTables.resources
-P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.UpdatedModel.resources
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.InitialCreate.resources
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.csproj.GenerateResource.Cache
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.UpdateTimeStamp.resources

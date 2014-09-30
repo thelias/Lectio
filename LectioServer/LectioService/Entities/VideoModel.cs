@@ -25,10 +25,10 @@ namespace LectioService.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime TimeStamp { get; set; }
 
-        [ForeignKey("Course")]
-        public int CourseId { get; set; }
+        [ForeignKey("Lecture")]
+        public int LectureId { get; set; }
 
-        public virtual Course Course { get; set; }
+        public virtual Lecture Lecture { get; set; }
 
         [ForeignKey("User")]
         public string UserId { get; set; }
