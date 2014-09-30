@@ -13,10 +13,11 @@ namespace LectioService.Interfaces
 
         Lecture GetLecture(int lectureId);
 
-        void AddNewLecture(Lecture lecture);
+        void AddNewLecture(ApplicationUser user, Lecture lecture);
 
-        void DeleteLecture(Lecture lecture);
+        void DeleteLecture(ApplicationUser user, Lecture lecture);
 
-        void UpdateLecture(Lecture lecture);
+        void UpdateLecture(ApplicationUser user, Lecture lecture);
+
     }
 }

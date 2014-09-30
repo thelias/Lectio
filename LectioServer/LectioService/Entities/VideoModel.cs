@@ -22,6 +22,8 @@ namespace LectioService.Entities
 
         public string ThumbnailUrl { get; set; }
 
+    
+
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime TimeStamp { get; set; }
 
@@ -32,6 +34,9 @@ namespace LectioService.Entities
 
         [ForeignKey("User")]
         public string UserId { get; set; }
+
         public virtual ApplicationUser User { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,27 +19,45 @@ namespace LectioService.Services
         }
         public List<Lecture> GetLectures(ApplicationUser user, int pg, int num)
         {
-            throw new NotImplementedException();
+            var list = user.Lectures.Skip(pg*num).Take(num).ToList();
+            return list;
         }
 
         public Lecture GetLecture(int lectureId)
         {
-            throw new NotImplementedException();
+            var lect = _context.Lectures.SingleOrDefault(x => x.LectureId == lectureId);
+
+            return lect;
         }
 
-        public void AddNewLecture(Lecture lecture)
+        public void AddNewLecture(ApplicationUser user, Lecture lecture)
         {
-            throw new NotImplementedException();
+            if (user.Lectures == null || !user.Lectures.Any())
+            {
+                user.Lectures = new Collection<Lecture>();
+            }
+
+            user.Lectures.Add(lecture);
+            _context.SaveChanges();
         }
 
-        public void DeleteLecture(Lecture lecture)
+        public void DeleteLecture(ApplicationUser user, Lecture lecture)
         {
-            throw new NotImplementedException();
+
+            var lect = user.Lectures.SingleOrDefault(x => x.LectureId == lecture.LectureId);
+
+            if (lect == null) return;
+            _context.Lectures.Remove(lecture);
+            _context.SaveChanges();
         }
 
-        public void UpdateLecture(Lecture lecture)
+        public void UpdateLecture(ApplicationUser user, Lecture lecture)
         {
-            throw new NotImplementedException();
+            var lect = user.Lectures.SingleOrDefault(x => x.LectureId == lecture.LectureId);
+
+            if (lect == null) return;
+            lect = lecture;
+            _context.SaveChanges();
         }
     }
 }
