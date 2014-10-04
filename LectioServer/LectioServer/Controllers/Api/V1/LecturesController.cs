@@ -11,8 +11,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using LectioServer.Models;
 using LectioService;
 using LectioService.Entities;
+using LectioService.Interfaces;
+using LectioService.Services;
 
 namespace LectioServer.Controllers.Api.V1
 {
@@ -21,38 +24,48 @@ namespace LectioServer.Controllers.Api.V1
     public class LecturesController : ApiController
     {
         private readonly LectioContext _context;
+        private readonly ILectureService _lectureService;
         public LecturesController()
         {
             _context = new LectioContext();
+            _lectureService = new LectureService(_context);
         }
 
         public IHttpActionResult GetLectures(int pg, int num)
         {
-            // todo: finish method
-            return Ok();
+            var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
+            var results = _lectureService.GetLectures(user, pg, num);
+            return Ok(results);
         }
 
-        public IHttpActionResult AddLectures()
+        public IHttpActionResult AddLectures(LectureModel model)
         {
-            // todo: finish method
+            var lecture = new Lecture {LectureName = model.LectureName};
+            var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
+            _lectureService.AddNewLecture(user, lecture);
             return Ok();
         }
 
         public IHttpActionResult SelectLecture(int lectureId)
         {
-            // todo: finish method
-            return Ok();
+            var lecture = _lectureService.GetLecture(lectureId);
+            return Ok(lecture);
         }
 
         public IHttpActionResult DeleteLecture(int lectureId)
         {
-            // todo: finish method
+            var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
+            var lecture = _context.Lectures.SingleOrDefault(x => x.LectureId == lectureId);
+            if (lecture == null)
+                return NotFound();
+            _lectureService.DeleteLecture(user, lecture);
             return Ok();
         }
 
         public IHttpActionResult UpdateLecture(Lecture lecture)
         {
-            // todo: finish method
+            var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
+            _lectureService.UpdateLecture(user, lecture);
             return Ok();
         }
     }
