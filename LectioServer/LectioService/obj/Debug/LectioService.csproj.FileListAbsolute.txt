@@ -6,7 +6,6 @@ P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\EntityFramework.SqlS
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
-P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.Owin.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.Owin.Security.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.Owin.Security.OAuth.dll
@@ -57,3 +56,5 @@ C:\Users\ijones16\Documents\Lectio\LectioServer\LectioService\obj\Debug\LectioSe
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.InitialCreate.resources
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.csproj.GenerateResource.Cache
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.UpdateTimeStamp.resources
+P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\AWSSDK.dll
+P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\AWSSDK.pdb
