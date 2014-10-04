@@ -31,6 +31,16 @@ namespace LectioServer.Controllers.Api.V1
             _lectureService = new LectureService(_context);
         }
 
+        [HttpGet]
+        [Route("GetLecture")]
+        public IHttpActionResult GetLecture(int lectureId)
+        {
+            var lecture = _lectureService.GetLecture(lectureId);
+            return Ok(lecture);
+        }
+
+        [HttpGet]
+        [Route("GetLectures")]
         public IHttpActionResult GetLectures(int pg, int num)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
@@ -38,6 +48,8 @@ namespace LectioServer.Controllers.Api.V1
             return Ok(results);
         }
 
+        [HttpPost]
+        [Route("AddLectures")]
         public IHttpActionResult AddLectures(LectureModel model)
         {
             var lecture = new Lecture {LectureName = model.LectureName};
@@ -46,12 +58,8 @@ namespace LectioServer.Controllers.Api.V1
             return Ok();
         }
 
-        public IHttpActionResult SelectLecture(int lectureId)
-        {
-            var lecture = _lectureService.GetLecture(lectureId);
-            return Ok(lecture);
-        }
-
+        [HttpDelete]
+        [Route("DeleteLecture")]
         public IHttpActionResult DeleteLecture(int lectureId)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
@@ -62,6 +70,8 @@ namespace LectioServer.Controllers.Api.V1
             return Ok();
         }
 
+        [HttpPut]
+        [Route("UpdateLecture")]
         public IHttpActionResult UpdateLecture(Lecture lecture)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);

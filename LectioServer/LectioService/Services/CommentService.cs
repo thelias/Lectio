@@ -9,7 +9,7 @@ using LectioService.Interfaces;
 
 namespace LectioService.Services
 {
-    class CommentService: ICommentService
+     public class CommentService: ICommentService
     {
         private readonly LectioContext _context;
 
