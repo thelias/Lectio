@@ -10,6 +10,8 @@ using LectioService.Services;
 
 namespace LectioServer.Controllers.Api.V1
 {
+    [Authorize]
+    [RoutePrefix("api/v1/lectures")]
     public class VideoController : ApiController
     {
         private readonly LectioContext _context;
@@ -23,6 +25,8 @@ namespace LectioServer.Controllers.Api.V1
             _lectureService = new LectureService(_context);
         }
 
+        [HttpGet]
+        [Route("GetVideos")]
         public IHttpActionResult GetVideos(int lectureid, int pg, int num)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
@@ -31,6 +35,8 @@ namespace LectioServer.Controllers.Api.V1
             return Ok(videos);
         }
 
+        [HttpGet]
+        [Route("Getvideo")]
         public IHttpActionResult GetVideo(int videoid)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
@@ -38,8 +44,11 @@ namespace LectioServer.Controllers.Api.V1
             return Ok(vid);
         }
 
+        [HttpPost]
+        [Route("UploadVideo")]
         public IHttpActionResult UploadVideo()
         {
+            // TODO: Finish this.
             return Ok();
         }
     }
