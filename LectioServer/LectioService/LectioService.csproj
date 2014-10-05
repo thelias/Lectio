@@ -58,6 +58,12 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -68,6 +74,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -83,6 +90,7 @@
     <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\ILectureService.cs" />
     <Compile Include="Interfaces\IMediaService.cs" />
+    <Compile Include="Interfaces\IThumbnailService.cs" />
     <Compile Include="Interfaces\IVideoService.cs" />
     <Compile Include="LectioContext.cs" />
     <Compile Include="Entities\IdentityModel.cs" />
@@ -99,6 +107,7 @@
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\LectureService.cs" />
     <Compile Include="Services\MediaService.cs" />
+    <Compile Include="Services\ThumbnailService.cs" />
     <Compile Include="Services\VideoService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +121,9 @@
     <EmbeddedResource Include="Migrations\201409300158200_UpdateTimeStamp.resx">
       <DependentUpon>201409300158200_UpdateTimeStamp.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TempStorage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
