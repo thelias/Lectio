@@ -1,0 +1,9 @@
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\LectioTranscoder.dll
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\LectioTranscoder.pdb
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\AForge.dll
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\AForge.Video.dll
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\AForge.xml
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\AForge.Video.xml
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\obj\Debug\LectioTranscoder.csprojResolveAssemblyReference.cache
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\obj\Debug\LectioTranscoder.dll
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\obj\Debug\LectioTranscoder.pdb

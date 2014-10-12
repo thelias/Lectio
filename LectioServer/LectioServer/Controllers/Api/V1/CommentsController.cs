@@ -13,7 +13,7 @@ using LectioServer.Models;
 namespace LectioServer.Controllers.Api.V1
 {
     [Authorize]
-    [RoutePrefix("api/v1/lectures")]
+    [RoutePrefix("api/v1/comments")]
     public class CommentsController : ApiController
     {
         private readonly LectioContext _context;
