@@ -87,10 +87,9 @@
     <Compile Include="Entities\LectureModel.cs" />
     <Compile Include="Entities\CommentModel.cs" />
     <Compile Include="Entities\VideoModel.cs" />
+    <Compile Include="Interfaces\IAmazonService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\ILectureService.cs" />
-    <Compile Include="Interfaces\IMediaService.cs" />
-    <Compile Include="Interfaces\IThumbnailService.cs" />
     <Compile Include="Interfaces\IVideoService.cs" />
     <Compile Include="LectioContext.cs" />
     <Compile Include="Entities\IdentityModel.cs" />
@@ -104,10 +103,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AmazonService.cs" />
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\LectureService.cs" />
-    <Compile Include="Services\MediaService.cs" />
-    <Compile Include="Services\ThumbnailService.cs" />
     <Compile Include="Services\VideoService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,7 +121,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TempStorage\" />
+    <ProjectReference Include="..\LectioTranscoder\LectioTranscoder.csproj">
+      <Project>{9d0e82c6-a98e-42cc-b497-136f9f3cbfdf}</Project>
+      <Name>LectioTranscoder</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

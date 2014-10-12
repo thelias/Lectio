@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using LectioService;
 using LectioService.Interfaces;
@@ -11,7 +12,7 @@ using LectioService.Services;
 namespace LectioServer.Controllers.Api.V1
 {
     [Authorize]
-    [RoutePrefix("api/v1/lectures")]
+    [RoutePrefix("api/v1/video")]
     public class VideoController : ApiController
     {
         private readonly LectioContext _context;
@@ -49,6 +50,21 @@ namespace LectioServer.Controllers.Api.V1
         public IHttpActionResult UploadVideo()
         {
             // TODO: Finish this.
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("TestUpload")]
+        [AllowAnonymous]
+        public IHttpActionResult TestUpload()
+        {
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count <= 0)
+            {
+                return BadRequest("No file");
+            }
+
+            var file = new HttpPostedFileWrapper(httpRequest.Files[0]);
             return Ok();
         }
     }
