@@ -37,6 +37,10 @@ namespace LectioService.Entities
 
         public virtual ApplicationUser User { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        [ForeignKey("Thread")]
+        public int? ThreadId { get; set; }
+
+        public virtual Thread Thread { get; set; }
+       
     }
 }

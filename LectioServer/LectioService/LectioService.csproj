@@ -86,10 +86,12 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\LectureModel.cs" />
     <Compile Include="Entities\CommentModel.cs" />
+    <Compile Include="Entities\ThreadModel.cs" />
     <Compile Include="Entities\VideoModel.cs" />
     <Compile Include="Interfaces\IAmazonService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\ILectureService.cs" />
+    <Compile Include="Interfaces\IThreadService.cs" />
     <Compile Include="Interfaces\IVideoService.cs" />
     <Compile Include="LectioContext.cs" />
     <Compile Include="Entities\IdentityModel.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Services\AmazonService.cs" />
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\LectureService.cs" />
+    <Compile Include="Services\ThreadService.cs" />
     <Compile Include="Services\VideoService.cs" />
   </ItemGroup>
   <ItemGroup>
