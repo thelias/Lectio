@@ -42,7 +42,7 @@ namespace LectioServer.Areas.HelpPage.Controllers
                 }
             }
 
-            return View(ErrorViewName);
+            return View();
         }
 
         public ActionResult ResourceModel(string modelName)
@@ -57,7 +57,7 @@ namespace LectioServer.Areas.HelpPage.Controllers
                 }
             }
 
-            return View(ErrorViewName);
+            return View();
         }
     }
 }
