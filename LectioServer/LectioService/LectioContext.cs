@@ -39,6 +39,8 @@ namespace LectioService
 
         public DbSet<Comment> Comments { get; set; }
 
+        public DbSet<Thread> Threads { get; set; }
+
         public DbSet<Lecture> Lectures { get; set; } 
         
         #endregion
