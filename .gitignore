@@ -10,8 +10,8 @@
 
 \f1\fs26 \cf2 *[!\cf0 c\cf2 ][!\cf0 o\cf2 ][!\cf0 n\cf2 ][!\cf0 f\cf2 ][!\cf0 i\cf2 ][!\cf0 g\cf2 ]\cf0 \
 \cf2 *.\cf0 config\cf2 ?*\
-/packages/*\
-/packages/!repositories.config\
+\packages\*\
+\packages\!repositories.config
 \pard\pardeftab720\sl340
 
 \f2 \cf0 \cb3 OS junk files\
