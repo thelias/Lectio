@@ -37,7 +37,7 @@ namespace LectioService.Entities
         public virtual ICollection<Lecture> Lectures { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Thread> Threads { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Video> Videos { get; set; } 

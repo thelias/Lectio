@@ -20,22 +20,16 @@ namespace LectioService.Services
 
         public List<Comment> GetComments(Video video, int pg, int num)
         {
-            var list = video.Comments.Skip(pg*num).Take(num).ToList();
-            return list;
+            throw new NotImplementedException(); //TODO: FIX!!!
         }
 
         public void AddNewComment(ApplicationUser user, Comment comment, Video video)
         {
-            if(video.UserId != user.Id) return;
+            
 
+            throw new NotImplementedException(); //TODO: FIX
 
-            if (video.Comments == null || !video.Comments.Any())
-            {
-                video.Comments = new Collection<Comment>();
-            }
-
-            video.Comments.Add(comment);
-            _context.SaveChanges();
+            
         }
     }
 }
