@@ -1,13 +1,21 @@
-﻿using System;
+﻿/*
+ * Author:
+ * Will Czifro
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using LectioServer.Models;
 using LectioService;
 using LectioService.Interfaces;
 using LectioService.Services;
+//using LectioTranscoder;
 
 namespace LectioServer.Controllers.Api.V1
 {
@@ -18,12 +26,14 @@ namespace LectioServer.Controllers.Api.V1
         private readonly LectioContext _context;
         private readonly IVideoService _videoService;
         private readonly ILectureService _lectureService;
+        private readonly IAmazonService _amazonService;
 
         public VideoController()
         {
             _context = new LectioContext();
             _videoService = new VideoService(_context);
             _lectureService = new LectureService(_context);
+            _amazonService = new AmazonService();
         }
 
         [HttpGet]
@@ -47,16 +57,8 @@ namespace LectioServer.Controllers.Api.V1
 
         [HttpPost]
         [Route("UploadVideo")]
-        public IHttpActionResult UploadVideo()
-        {
-            // TODO: Finish this.
-            return Ok();
-        }
-
-        [HttpPost]
-        [Route("TestUpload")]
         [AllowAnonymous]
-        public IHttpActionResult TestUpload()
+        public async Task<IHttpActionResult> UploadVideo(VideoModel model)
         {
             var httpRequest = HttpContext.Current.Request;
             if (httpRequest.Files.Count <= 0)
@@ -65,6 +67,49 @@ namespace LectioServer.Controllers.Api.V1
             }
 
             var file = new HttpPostedFileWrapper(httpRequest.Files[0]);
+
+            var video = await _amazonService.UploadVideo(file, file.FileName);
+
+            video.VideoName = ""; // todo: remove this later
+
+            var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
+
+            var lecture = _lectureService.GetLecture(model.LectureId);
+
+            _videoService.AddNewVideo(user, lecture, video);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("TestUpload")]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> TestUpload()
+        {
+            //var httpRequest = HttpContext.Current.Request;
+            //if (httpRequest.Files.Count <= 0)
+            //{
+            //    return BadRequest("No file");
+            //}
+
+            //var file = new HttpPostedFileWrapper(httpRequest.Files[0]);
+
+            //var transcoder = new Transcoder();
+            //var r = await transcoder.TranscodeToMP4(file, file.FileName);
+            //var rr = r;
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("TestAmazonTranscoder")]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> TestAmazonTranscoder()
+        {
+
+            var filename = Constants.GenerateUrl("clipcanvas_14348_offline_199deb03-6202-4c28-a6c1-be5485fa134a.mp4");
+
+            await _amazonService.CreateTranscodingJobAsync(filename);
+
             return Ok();
         }
     }

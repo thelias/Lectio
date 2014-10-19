@@ -24,6 +24,10 @@ namespace LectioService.Entities
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
+        [ForeignKey("Thread")]
+        public int ThreadId { get; set; }
+        public virtual Thread Thread { get; set; }
+
         public string CommentText { get; set; }
     }
 }

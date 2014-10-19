@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Authors:
+ * Jordanne Perry,
+ * Ian Jones,
+ * Will Czifro
+ */
+
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -35,9 +42,6 @@ namespace LectioService.Entities
 
         [JsonIgnore]
         public virtual ICollection<Lecture> Lectures { get; set; }
-
-        [JsonIgnore]
-        public virtual ICollection<Thread> Threads { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Video> Videos { get; set; } 

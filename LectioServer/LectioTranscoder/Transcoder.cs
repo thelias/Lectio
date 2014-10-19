@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using LectioTranscoder.Interfaces;
-using LibImages;
 using LibMPlayerCommon;
 using Microsoft.WindowsAPICodePack.Shell;
+using Mencoder = LectioTranscoder.MPlayer.Mencoder;
 
 namespace LectioTranscoder
 {
@@ -20,13 +20,16 @@ namespace LectioTranscoder
     /// </summary>
     public class Transcoder : ITranscoder
     {
+        private bool IsFinished = false;
         public async Task<Dictionary<string, MemoryStream>> TranscodeToMP4(HttpPostedFileWrapper file, string filename)
         {
             var results = new Dictionary<string, MemoryStream>();
             var videostream = new MemoryStream();
-            var newFilename = filename.Replace(filename.Split('.').Last(), "mp4");
-            var path = "/../TempStorage/";
+            var newFilename = "converted_" + filename.Replace(filename.Split('.').Last(), "mpeg4");
+            var path = System.Web.Hosting.HostingEnvironment.MapPath("~/TempStorage/");
             bool error = false, completeFail = false;
+            var original = path + filename;
+            var converted = path + newFilename;
             // Temporarily save video file
             file.SaveAs(path+filename);
             // Attempt to tanscode file
@@ -34,7 +37,15 @@ namespace LectioTranscoder
             {
                 // uses MPlayer library to transcode file to MP4
                 var mencoder = new Mencoder();
-                mencoder.Convert(Mencoder.VideoType.mpeg4, Mencoder.AudioType.mp3, path+filename, path+newFilename);
+                mencoder.Convert(Mencoder.VideoType.mpeg4, Mencoder.AudioType.flac, original, converted);
+                mencoder.ConversionComplete += new MplayerEventHandler(TranscodingEventHandler);
+
+                while (!mencoder.MencoderInstance.HasExited)
+                {
+                    Task.Delay(new TimeSpan(0, 0, 1));
+                }
+
+                //if (mencoder.MencoderInstance.)
 
                 // Read in new video and copy to MemoryStream object
                 var filestream = File.Open(path + filename, FileMode.Open);
@@ -43,23 +54,29 @@ namespace LectioTranscoder
 
                 // add MemoryStream object to dictionary and get a thumbnail MemoryStream object
                 results.Add("videostream", videostream);
-                results.Add("thumbstream", await ExtractThumbnailAsync(path+newFilename));
+                results.Add("thumbstream", await ExtractThumbnailAsync(converted));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                error = true;  // run error code
+                throw ex;
+                //error = true;  // run error code
             }
 
-            if (error)
-            {
-                // We failed, let's clean up and leave
-                Task.Run(async () => await CleanupFileAsync(filename));
-                throw new Exception("Failed to transcode video");
-            }
+            //if (error)
+            //{
+            //    // We failed, let's clean up and leave
+            //    Task.Run(async () => await CleanupFileAsync(converted));
+            //    throw new Exception("Failed to transcode video");
+            //}
 
             // We succeeded, let's clean up and return results
-            await CleanupFileAsync(filename);
+            await CleanupFileAsync(original);
             return results;
+        }
+
+        public void TranscodingEventHandler(object sender, LibMPlayerCommon.MplayerEvent e)
+        {
+            IsFinished = true;
         }
 
         /// <summary>

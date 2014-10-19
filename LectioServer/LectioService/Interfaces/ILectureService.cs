@@ -1,8 +1,10 @@
-﻿using System;
+﻿/*
+ * Authors:
+ * Will Czifro,
+ * Jordanne Perry,
+ */
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LectioService.Entities;
 
 namespace LectioService.Interfaces

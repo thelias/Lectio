@@ -11,6 +11,8 @@
     <AssemblyName>LectioService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,7 +93,6 @@
     <Compile Include="Interfaces\IAmazonService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\ILectureService.cs" />
-    <Compile Include="Interfaces\IThreadService.cs" />
     <Compile Include="Interfaces\IVideoService.cs" />
     <Compile Include="LectioContext.cs" />
     <Compile Include="Entities\IdentityModel.cs" />
@@ -103,12 +104,19 @@
     <Compile Include="Migrations\201409300158200_UpdateTimeStamp.Designer.cs">
       <DependentUpon>201409300158200_UpdateTimeStamp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410182120232_threadmodel.cs" />
+    <Compile Include="Migrations\201410182120232_threadmodel.Designer.cs">
+      <DependentUpon>201410182120232_threadmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410182130369_runseed.cs" />
+    <Compile Include="Migrations\201410182130369_runseed.Designer.cs">
+      <DependentUpon>201410182130369_runseed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AmazonService.cs" />
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\LectureService.cs" />
-    <Compile Include="Services\ThreadService.cs" />
     <Compile Include="Services\VideoService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,14 +130,21 @@
     <EmbeddedResource Include="Migrations\201409300158200_UpdateTimeStamp.resx">
       <DependentUpon>201409300158200_UpdateTimeStamp.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LectioTranscoder\LectioTranscoder.csproj">
-      <Project>{9d0e82c6-a98e-42cc-b497-136f9f3cbfdf}</Project>
-      <Name>LectioTranscoder</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201410182120232_threadmodel.resx">
+      <DependentUpon>201410182120232_threadmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410182130369_runseed.resx">
+      <DependentUpon>201410182130369_runseed.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

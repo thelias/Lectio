@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Author:
+ * Will Czifro
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -21,8 +26,6 @@ using LectioServer.App_Start;
 using LectioService;
 using LectioService.Entities;
 using LectioServer.Models;
-using LectioService.Interfaces;
-//using LectioService.Services;
 
 namespace LectioServer.Controllers.Api.V1
 {
@@ -69,28 +72,29 @@ namespace LectioServer.Controllers.Api.V1
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var user = new ApplicationUser { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
-                var confirmationToken = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                //await UserManager.ConfirmEmailAsync(user.Id, confirmationToken);
-                var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority + Url.Route("confirmemail", new { userId = user.Id, code = confirmationToken});
+            await UserManager.CreateAsync(user);
+            var confirmationToken = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            //await UserManager.ConfirmEmailAsync(user.Id, confirmationToken);
+            var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority + Url.Route("confirmemail", new { userId = user.Id, code = confirmationToken });
 
-                string content;
-                var path = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/confirm-email-body.html");
-                if (path == null) return InternalServerError(); //todo: need to add this file
-                using (var reader = new StreamReader(path))
-                {
-                    content = await reader.ReadToEndAsync();
-                }
+            string content;
+            var path = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/confirm-email-body.html");
+            if (path == null) return InternalServerError(); //todo: need to add this file
+            using (var reader = new StreamReader(path))
+            {
+                content = await reader.ReadToEndAsync();
+            }
+            content = content.Replace("{{USERNAME}}", user.FirstName + " " + user.LastName);
+            content = content.Replace("{{callbackUrl}}", callbackUrl);
+            await UserManager.SendEmailAsync(user.Id, "Lectio: Confirm Your Account", content);
+            if (Request.Headers.Contains("Test"))
+            {
+                await UserManager.DeleteAsync(user); // delete for ease of testing
+            }
 
-                content = content.Replace("{{callbackUrl}}", callbackUrl);
-                await UserManager.SendEmailAsync(user.Id, "Lectio: Confirm Your Account", content);
-                if (Request.Headers.Contains("Test"))
-                {
-                    await UserManager.DeleteAsync(user); // delete for ease of testing
-                }
 
+            return Ok("Please confirm email.");
 
-                return Ok("Please confirm email.");
-            
         }
 
         //
@@ -115,7 +119,7 @@ namespace LectioServer.Controllers.Api.V1
             return BadRequest(ModelState);
         }
 
-            //
+        //
         // POST: /Accounts/ProfileImage
         [HttpPost]
         [Route("profileimage", Name = "profileimage")]

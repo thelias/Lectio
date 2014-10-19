@@ -1,14 +1,11 @@
-﻿using System;
+﻿/*
+ * Authors:
+ * Ian Jones,
+ * Will Czifro
+ */
+
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity.Infrastructure;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Newtonsoft.Json;
 
 namespace LectioService.Entities
 {
@@ -38,7 +35,7 @@ namespace LectioService.Entities
         public virtual ApplicationUser User { get; set; }
 
         [ForeignKey("Thread")]
-        public int? ThreadId { get; set; }
+        public int ThreadId { get; set; }
 
         public virtual Thread Thread { get; set; }
        

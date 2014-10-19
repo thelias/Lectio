@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Authors:
+ * Ian Jones,
+ * Jordanne Perry
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;

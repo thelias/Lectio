@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Authors:
+ * Ian Jones,
+ * Jordanne Perry,
+ * Will Czifro
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -20,16 +27,23 @@ namespace LectioService.Services
 
         public List<Comment> GetComments(Video video, int pg, int num)
         {
-            throw new NotImplementedException(); //TODO: FIX!!!
+            var comments = video.Thread.Comments.Skip(pg*num)
+                                                .Take(num)
+                                                .ToList();
+            return comments;
         }
 
         public void AddNewComment(ApplicationUser user, Comment comment, Video video)
         {
-            
+            var vid = user.Videos.SingleOrDefault(x => x.VideoId == video.VideoId);
 
-            throw new NotImplementedException(); //TODO: FIX
+            if (vid == null)
+            {
+                throw new Exception("Access Denied");
+            }
 
-            
+            vid.Thread.Comments.Add(comment);
+            _context.SaveChanges();
         }
     }
 }

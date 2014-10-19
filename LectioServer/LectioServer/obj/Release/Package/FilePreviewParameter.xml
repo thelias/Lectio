@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="LectioServer" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^P:\\Repositories\\Lectio\\LectioServer\\LectioServer\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^P:\\Repositories\\Lectio\\LectioServer\\LectioServer\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="LectioServer/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^P:\\Repositories\\Lectio\\LectioServer\\LectioServer\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="Lectio-Web.config Connection String" description="" value="Data Source=md1dy5ub67.database.windows.net;Initial Catalog=Lectio;User ID=czifro@md1dy5ub67;Password=06GXh!gUu@vo;" tags="">
+    <parameterEntry kind="XmlFile" scope="P:\\Repositories\\Lectio\\LectioServer\\LectioServer\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Lectio']/@connectionString" />
+  </parameter>
+</parameters>
