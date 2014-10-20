@@ -1,0 +1,61 @@
+<h1>Courses</h1>
+<div class="jumbotron">
+    <button style="text-align: left" class="form-control btn-default" ng-click="openVideoModal()">Lecture 1
+        <div style="float:right;">10/10/2014</div>
+    </button>
+    <p></p>
+    <button style="text-align: left" class="form-control btn-default" ng-click="openVideoModal()">Lecture 2
+        <div style="float:right;">10/12/2014</div>
+    </button>
+    <p></p>
+    <button style="text-align: left" class="form-control btn-default" ng-click="openVideoModal()">Lecture 3
+        <div style="float:right;">10/15/2014</div>
+    </button>
+    <p></p>
+    <button style="text-align: left" class="form-control btn-default" ng-click="openVideoModal()">Lecture 4
+        <div style="float:right;">10/18/2014</div>
+    </button>
+    <p></p>
+</div>
+<button class="btn btn-success" ng-click="openUploadModal()">Add video</button>
+<div id="VideoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Video</h4>
+            </div>
+            <div class="modal-body">
+                <video width="500" height="320" controls>
+                    <source src="movie.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div id="UploadModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Upload</h4>
+            </div>
+            <form action='' method='POST' enctype='multipart/form-data'>
+                <input type='file' name='userFile'><br>
+                <input type='submit' name='upload_btn' value='upload'>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default">Upload</button>
+        </div>
+    </div>
+</div>

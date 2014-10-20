@@ -1,0 +1,29 @@
+<h1 >Courses</h1>
+            <div class="jumbotron">
+            <button ng-repeat="course in Courses" style="text-align: left"  class="form-control btn-default" ng-href="#/courses"> {{course.Course.name}} <div style="float:right;">{{course.Course.instructor}}</div></button>
+                <p></p>
+            </div>
+<button class="btn btn-success" ng-click="openAddCourseModal()">Create a Course</button>
+<div id="AddCourseModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create Course</h4>
+            </div>
+            <div class="modal-body">
+                <input placeholder="Course Name" class="form-control put-group"/>
+                <p></p>
+                <input placeholder="Course Number" class="form-control input-group"/>
+                <p></p>
+                <input placeholder="Course Instructor" class="form-control input-group"/>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="addLecture()">Save</button>
+            </div>
+        </div>
+    </div>
+
+</div>

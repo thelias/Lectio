@@ -14,7 +14,16 @@ angular.module('helloApp')
       'AngularJS',
       'Karma'
     ];
-        $scope.openModal = function(){
-                $("#myModal").modal('show');
+        $scope.openSignUpModal = function(){
+                $("#SignUpModal").modal('show');
+        }
+        $scope.openLoginModal = function(){
+            $("#LoginModal").modal('show');
+        }
+        $scope.closeVideo = function()
+        {
+            $("#vid").remove();
+            $("#skip").remove();
+            $(".header").css("opacity", 1);
         }
   });

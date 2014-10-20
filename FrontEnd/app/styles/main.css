@@ -11,10 +11,30 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+#vid
+{
+ width:100%;
+ margin-top:-30px;
+}
+#vid-text
+{
+    position: relative;
+    padding:150px;
+    text-shadow: #000 2px 2px;
+    color: #CCC;
+    z-index: 100;
+    font-size: 4vw;
+    font-family: "Pacifico", cursive;
+    font-variant: small-caps;
+    font-weight: normal;
+}
+
+
 
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
+  opacity:0;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -34,7 +54,7 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 100%;
   }
 }
 .container-narrow > hr {
