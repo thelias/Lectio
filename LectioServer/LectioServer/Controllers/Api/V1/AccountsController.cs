@@ -77,7 +77,9 @@ namespace LectioServer.Controllers.Api.V1
             await UserManager.CreateAsync(user);
             var confirmationToken = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
             //await UserManager.ConfirmEmailAsync(user.Id, confirmationToken);
-            var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority + Url.Route("confirmemail", new { userId = user.Id, code = confirmationToken });
+            var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority;
+            callbackUrl += "/#/accounts/confirmemail?userid=" + user.Id + "&code=";
+            callbackUrl += HttpUtility.UrlEncode(confirmationToken);
 
             string content;
             var path = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/confirm-email-body.html");
@@ -136,7 +138,9 @@ namespace LectioServer.Controllers.Api.V1
 
             var resetToken = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
 
-            var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority + Url.Route("resetPassword", new { userId = user.Id, code = resetToken });
+            var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority;
+            callbackUrl += "/#/accounts/resetpassword?userid=" + user.Id + "&code=";
+            callbackUrl += HttpUtility.UrlEncode(resetToken);
 
             string content;
             var path = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/reset-password-body.html");
@@ -182,62 +186,30 @@ namespace LectioServer.Controllers.Api.V1
         [ResponseType(typeof(ApplicationUser))]
         public async Task<IHttpActionResult> ProfileImage()
         {
-            var user = await UserManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return InternalServerError(new Exception("User does not exist."));
+            throw new NotImplementedException();
+            //var user = await UserManager.FindByNameAsync(User.Identity.Name);
+            //if (user == null)
+            //    return InternalServerError(new Exception("User does not exist."));
 
-            var httpRequest = HttpContext.Current.Request;
-            if (httpRequest.Files.Count <= 0)
-            {
-                return BadRequest("No file");
-            }
-
-            var file = new HttpPostedFileWrapper(httpRequest.Files[0]);
-
-            //try
+            //var httpRequest = HttpContext.Current.Request;
+            //if (httpRequest.Files.Count <= 0)
             //{
-            //    var imageService = new ImageService();
-            //    user.PhotoUrl = "https://s3.amazonaws.com/WeKeep/";
-            //    user.PhotoUrl += await imageService.Insert(file, file.FileName, UsersContainer);
+            //    return BadRequest("No file");
             //}
-            //catch (WebException)
-            //{
-            //    return InternalServerError(new Exception("Unable to upload file"));
-            //}
-            var result = await UserManager.UpdateAsync(user);
-            return Ok(user);
-        }
 
-        //
-        // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("confirmemail", Name = "confirmemail")]
-        [ResponseType(typeof(string))]
-        public async Task<IHttpActionResult> ConfirmEmail(string userId, string code)
-        {
-            if (userId == null || code == null)
-            {
-                return BadRequest();
-            }
-            IdentityResult result = null;
-            try
-            {
-                result = await UserManager.ConfirmEmailAsync(userId, code);
-            }
-            catch (InvalidOperationException)
-            {
-                ModelState.AddModelError("Not Found", "User was not found.");
-            }
-            if (result != null && result.Succeeded)
-            {
-                return Ok("Confirmed Email");
-            }
-            if (result != null)
-            {
-                AddErrors(result);
-            }
-            return BadRequest(ModelState);
+            //var file = new HttpPostedFileWrapper(httpRequest.Files[0]);
+
+            ////try
+            ////{
+            ////    var amazonService = new AmazonService();
+            ////
+            ////}
+            ////catch (WebException)
+            ////{
+            ////    return InternalServerError(new Exception("Unable to upload file"));
+            ////}
+            //var result = await UserManager.UpdateAsync(user);
+            //return Ok(user);
         }
 
         [HttpGet]
