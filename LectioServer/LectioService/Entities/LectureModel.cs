@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Author:
+ * Ian Jones
+ */
+
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -14,8 +19,14 @@ namespace LectioService.Entities
 {
     public class Lecture
     {
+        /// <summary>
+        /// Lecture Id
+        /// </summary>
         public int LectureId { get; set; }
 
+        /// <summary>
+        /// Lecture Name
+        /// </summary>
         [Display(Name = "Lecture Name")]
         public string LectureName { get; set; }
 

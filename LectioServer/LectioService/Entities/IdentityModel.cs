@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Authors:
+ * Jordanne Perry,
+ * Ian Jones,
+ * Will Czifro
+ */
+
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -25,19 +32,28 @@ namespace LectioService.Entities
          * Use [JsonIgnore] to prevent a property from being returned in the http response
          */
 
+        /// <summary>
+        /// User's first name
+        /// </summary>
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        /// <summary>
+        /// User's Last Name
+        /// </summary>
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [JsonIgnore]
         public string ProfileUrl { get; set; }
-
+        /// <summary>
+        /// User's Role, 1: Student, 2: Instructor
+        /// </summary>
+        [ForeignKey("Role")]
+        public string RoleId { get; set; }
+        [JsonIgnore]
         public virtual IdentityRole Role { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Lecture> Lectures { get; set; }
-
-        [JsonIgnore]
-        public virtual ICollection<Thread> Threads { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Video> Videos { get; set; } 

@@ -1,9 +1,16 @@
-﻿using System;
+﻿/*
+ * Author:
+ * Ian Jones,
+ * Jordanne Perry
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using LectioService;
 using LectioService.Entities;
 using LectioService.Interfaces;
@@ -29,6 +36,7 @@ namespace LectioServer.Controllers.Api.V1
 
         [HttpGet]
         [Route("GetComments")]
+        [ResponseType(typeof(List<Comment>))]
         public IHttpActionResult GetComments(int videoid, int pg, int num) 
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);

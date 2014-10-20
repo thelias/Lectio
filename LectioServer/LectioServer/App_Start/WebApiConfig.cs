@@ -26,7 +26,7 @@ namespace LectioServer
             // For more information, visit http://go.microsoft.com/fwlink/?LinkId=279712.
             config.EnableQuerySupport();
 
-            config.EnableCors(new EnableCorsAttribute("https://localhost:57528,http://wekeep.azurewebsites.net", "*", "*"));
+            config.EnableCors(new EnableCorsAttribute("https://localhost:1157,http://lectioserver.azurewebsites.net", "*", "*"));
         }
     }
 }

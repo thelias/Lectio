@@ -10,40 +10,18 @@
 
 \f1\fs26 \cf2 *[!\cf0 c\cf2 ][!\cf0 o\cf2 ][!\cf0 n\cf2 ][!\cf0 f\cf2 ][!\cf0 i\cf2 ][!\cf0 g\cf2 ]\cf0 \
 \cf2 *.\cf0 config\cf2 ?*\
-/packages/*\
-/packages/!repositories.config\
+packages/
+packages/!repositories.config
 \pard\pardeftab720\sl340
 
-\f2 \cf0 \cb3 OS junk files\
-[Tt]humbs.db\
-*.DS_Store\
-\
-#Visual Studio files\
-*.[Oo]bj\
-*.user\
-*.aps\
-*.pch\
-*.vspscc\
-*.vssscc\
-*_i.c\
-*_p.c\
-*.ncb\
-*.suo\
-*.tlb\
-*.tlh\
-*.bak\
-*.[Cc]ache\
-*.ilk\
-*.log\
-*.lib\
-*.sbr\
-*.sdf\
-*.opensdf\
-*.unsuccessfulbuild\
-ipch/\
-[Oo]bj/\
-[Bb]in\
-[Dd]ebug*/\
-[Rr]elease*/\
-Ankh.NoLoad\
+# Visual Studio
+*.nupkg
+TestResults/
+Nuget.exe
+*.suo
+*.user
+*.dll
+bin/*
+obj/*
+
 }

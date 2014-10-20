@@ -153,7 +153,7 @@ namespace LectioServer.App_Start
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
 
-            mail.From = new MailAddress("czifro@gmail.com", "test");  //todo: set email and FromWho
+            mail.From = new MailAddress("wsievro@gmail.com", "test");  //todo: set email and FromWho
             mail.To.Add(message.Destination);
             mail.Subject = message.Subject;
             mail.IsBodyHtml = true;
@@ -161,7 +161,7 @@ namespace LectioServer.App_Start
             smtpServer.Port = Convert.ToInt16(587);
             smtpServer.UseDefaultCredentials = false;
             smtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpServer.Credentials = new NetworkCredential("czifro@gmail.com", "6starwars");   //todo: set email and password
+            smtpServer.Credentials = new NetworkCredential("czifro@gmail.com", "mzzpadtlxnixxubj");   //todo: set email and password
             smtpServer.EnableSsl = true;
             smtpServer.Send(mail);
             //            return true;

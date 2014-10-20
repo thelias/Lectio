@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Author:
+ * Will Czifro
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -10,6 +15,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -21,8 +27,6 @@ using LectioServer.App_Start;
 using LectioService;
 using LectioService.Entities;
 using LectioServer.Models;
-using LectioService.Interfaces;
-//using LectioService.Services;
 
 namespace LectioServer.Controllers.Api.V1
 {
@@ -64,33 +68,35 @@ namespace LectioServer.Controllers.Api.V1
         [HttpPost]
         [AllowAnonymous]
         [Route("register")]
+        [ResponseType(typeof(string))]
         public async Task<IHttpActionResult> Register(RegisterModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var user = new ApplicationUser { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
-                var confirmationToken = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                //await UserManager.ConfirmEmailAsync(user.Id, confirmationToken);
-                var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority + Url.Route("confirmemail", new { userId = user.Id, code = confirmationToken});
+            await UserManager.CreateAsync(user);
+            var confirmationToken = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            //await UserManager.ConfirmEmailAsync(user.Id, confirmationToken);
+            var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority + Url.Route("confirmemail", new { userId = user.Id, code = confirmationToken });
 
-                string content;
-                var path = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/confirm-email-body.html");
-                if (path == null) return InternalServerError(); //todo: need to add this file
-                using (var reader = new StreamReader(path))
-                {
-                    content = await reader.ReadToEndAsync();
-                }
+            string content;
+            var path = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/confirm-email-body.html");
+            if (path == null) return InternalServerError(); //todo: need to add this file
+            using (var reader = new StreamReader(path))
+            {
+                content = await reader.ReadToEndAsync();
+            }
+            content = content.Replace("{{USERNAME}}", user.FirstName + " " + user.LastName);
+            content = content.Replace("{{callbackUrl}}", callbackUrl);
+            await UserManager.SendEmailAsync(user.Id, "Lectio: Confirm Your Account", content);
+            if (Request.Headers.Contains("Test"))
+            {
+                await UserManager.DeleteAsync(user); // delete for ease of testing
+            }
 
-                content = content.Replace("{{callbackUrl}}", callbackUrl);
-                await UserManager.SendEmailAsync(user.Id, "Lectio: Confirm Your Account", content);
-                if (Request.Headers.Contains("Test"))
-                {
-                    await UserManager.DeleteAsync(user); // delete for ease of testing
-                }
 
+            return Ok("Please confirm email.");
 
-                return Ok("Please confirm email.");
-            
         }
 
         //
@@ -100,11 +106,15 @@ namespace LectioServer.Controllers.Api.V1
         [Route("confirmation")]
         public async Task<IHttpActionResult> Confirmation(ConfirmationModel model)
         {
-            await UserManager.ConfirmEmailAsync(model.UserId, model.ConfirmationToken);
-            var user = _context.Users.SingleOrDefault(x => x.UserName == User.Identity.Name);
+            var confirmationtoken = HttpUtility.UrlDecode(model.ConfirmationToken);
+            await UserManager.ConfirmEmailAsync(model.UserId, confirmationtoken);
+            var user = await UserManager.FindByIdAsync(model.UserId);
             if (user == null)
                 return InternalServerError(new Exception("User not found"));
-            var result = await UserManager.CreateAsync(user, model.Password);
+
+            var resetToken = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+            var result = await UserManager.ResetPasswordAsync(user.Id, resetToken, model.Password);
+
             if (result.Succeeded)
             {
                 return Ok("Please login.");
@@ -115,11 +125,12 @@ namespace LectioServer.Controllers.Api.V1
             return BadRequest(ModelState);
         }
 
-            //
+        //
         // POST: /Accounts/ProfileImage
         [HttpPost]
         [Route("profileimage", Name = "profileimage")]
         [Authorize]
+        [ResponseType(typeof(ApplicationUser))]
         public async Task<IHttpActionResult> ProfileImage()
         {
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
@@ -153,6 +164,7 @@ namespace LectioServer.Controllers.Api.V1
         [AllowAnonymous]
         [HttpGet]
         [Route("confirmemail", Name = "confirmemail")]
+        [ResponseType(typeof(string))]
         public async Task<IHttpActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
@@ -177,6 +189,15 @@ namespace LectioServer.Controllers.Api.V1
                 AddErrors(result);
             }
             return BadRequest(ModelState);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("TestGetAllAccounts")]
+        public IHttpActionResult TestGetAllAccounts()
+        {
+            var users = _context.Users.ToList();
+            return Ok(users);
         }
 
 

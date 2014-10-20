@@ -2,8 +2,14 @@ P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\LectioTranscoder.
 P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\LectioTranscoder.pdb
 P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\AForge.dll
 P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\AForge.Video.dll
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\LibImages.dll
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\LibMplayerCommon.dll
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\Microsoft.WindowsAPICodePack.dll
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
 P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\AForge.xml
 P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\AForge.Video.xml
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\Microsoft.WindowsAPICodePack.pdb
+P:\Repositories\Lectio\LectioServer\LectioTranscoder\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
 P:\Repositories\Lectio\LectioServer\LectioTranscoder\obj\Debug\LectioTranscoder.csprojResolveAssemblyReference.cache
 P:\Repositories\Lectio\LectioServer\LectioTranscoder\obj\Debug\LectioTranscoder.dll
 P:\Repositories\Lectio\LectioServer\LectioTranscoder\obj\Debug\LectioTranscoder.pdb

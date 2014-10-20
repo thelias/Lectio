@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Author:
+ * Will Czifro
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,18 +33,30 @@ namespace LectioServer.Models
 
     public class ConfirmationModel
     {
+        /// <summary>
+        /// The user's id
+        /// </summary>
         [Required]
         public string UserId { get; set; }
 
+        /// <summary>
+        /// The confirmation token
+        /// </summary>
         [Required]
         public string ConfirmationToken { get; set; }
 
+        /// <summary>
+        /// Must be at least 6 characters in length
+        /// </summary>
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmPassword")]

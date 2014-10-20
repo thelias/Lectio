@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Authors:
+ * Jordane Perry,
+ * Will Czifro 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -35,6 +41,8 @@ namespace LectioService.Services
                 throw new Exception("Lecture not found");
             if (lect.Videos == null || !lect.Videos.Any())
                 lect.Videos = new Collection<Video>();
+            video.Thread = new Thread();
+            video.UserId = user.Id;
             lect.Videos.Add(video);
             _context.SaveChanges();
         }
