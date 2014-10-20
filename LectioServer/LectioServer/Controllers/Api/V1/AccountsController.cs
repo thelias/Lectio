@@ -81,7 +81,7 @@ namespace LectioServer.Controllers.Api.V1
 
             string content;
             var path = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/confirm-email-body.html");
-            if (path == null) return InternalServerError(); //todo: need to add this file
+            if (path == null) return InternalServerError();
             using (var reader = new StreamReader(path))
             {
                 content = await reader.ReadToEndAsync();
@@ -125,7 +125,56 @@ namespace LectioServer.Controllers.Api.V1
             return BadRequest(ModelState);
         }
 
-        //
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("RequestPasswordResetToken")]
+        public async Task<IHttpActionResult> RequestPasswordResetToken(RequestResetModel model)
+        {
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            if (user == null)
+                return InternalServerError(new Exception("User not found"));
+
+            var resetToken = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+
+            var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority + Url.Route("resetPassword", new { userId = user.Id, code = resetToken });
+
+            string content;
+            var path = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/reset-password-body.html");
+            if (path == null) return InternalServerError(); //todo: need to add this file
+            using (var reader = new StreamReader(path))
+            {
+                content = await reader.ReadToEndAsync();
+            }
+            content = content.Replace("{{USERNAME}}", user.FirstName + " " + user.LastName);
+            content = content.Replace("{{callbackUrl}}", callbackUrl);
+            await UserManager.SendEmailAsync(user.Id, "Lectio: Confirm Your Account", content);
+
+            return Ok("Please check your email");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("ResetPassword")]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordModel model)
+        {
+            var user = await UserManager.FindByIdAsync(model.UserId);
+            if (user == null)
+                return InternalServerError(new Exception("User not found"));
+            var resetToken = HttpUtility.UrlDecode(model.ResetToken);
+
+            var result = await UserManager.ResetPasswordAsync(user.Id, resetToken, model.Password);
+
+            if (result.Succeeded)
+            {
+                return Ok("Please login.");
+            }
+            AddErrors(result);
+
+            // If we got this far, something failed, redisplay form
+            return BadRequest(ModelState);
+        }
+
+            //
         // POST: /Accounts/ProfileImage
         [HttpPost]
         [Route("profileimage", Name = "profileimage")]
@@ -200,6 +249,15 @@ namespace LectioServer.Controllers.Api.V1
             return Ok(users);
         }
 
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("TestEndpoint")]
+        public IHttpActionResult TestEndpoint()
+        {
+            var url = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority;
+            return Ok(url);
+        }
 
         //[HttpPost]
         //[AllowAnonymous]

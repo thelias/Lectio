@@ -41,7 +41,7 @@ namespace LectioService.Services
             {
                 throw new Exception("Access Denied");
             }
-
+            comment.UserId = user.Id;
             vid.Thread.Comments.Add(comment);
             _context.SaveChanges();
         }
