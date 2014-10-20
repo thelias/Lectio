@@ -33,7 +33,6 @@ P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\LectioService.pdb
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\AWSSDK.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\EntityFramework.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\EntityFramework.SqlServer.dll
-P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\LectioTranscoder.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
@@ -44,9 +43,6 @@ P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.WindowsAPI
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Newtonsoft.Json.dll
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\Owin.dll
-P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\LibMplayerCommon.dll
-P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\LibImages.dll
-P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\LectioTranscoder.pdb
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\AWSSDK.pdb
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\EntityFramework.xml
 P:\Repositories\Lectio\LectioServer\LectioService\bin\Debug\EntityFramework.SqlServer.xml
@@ -66,3 +62,5 @@ P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrat
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.csproj.GenerateResource.Cache
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.dll
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.pdb
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.csprojResolveAssemblyReference.cache
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Debug\LectioService.Migrations.updatedUserModel.resources

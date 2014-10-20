@@ -54,7 +54,7 @@ namespace LectioService.Services
             {
                 var request = new PutObjectRequest
                 {
-                    BucketName = Constants.AmazonS3TempBucket,
+                    BucketName = Constants.AmazonS3BucketName,
                     Key = fileName,
                     ContentType = "video/" + ext,
                     CannedACL = S3CannedACL.PublicRead,
@@ -64,14 +64,16 @@ namespace LectioService.Services
                 var response = client.PutObject(request);
             }
 
-            CreateTranscodingJobAsync(fileName);
+            var result = await CreateTranscodingJobAsync(fileName);
+
+
 
             client = null;
             //var thumbnailUrl = await UploadThumbnail(processedVideoResults["thumbstream"], imageName, ext);
 
             var video = new Video
             {
-                ThumbnailUrl = Constants.GenerateUrl(fileName + "_00002.png"),
+                ThumbnailUrl = Constants.GenerateUrl(fileName + "_00001.png"),
                 VideoUrl = Constants.GenerateUrl(fileName + "_enc.mp4")
             };
 
@@ -97,7 +99,7 @@ namespace LectioService.Services
             return Task.FromResult(Constants.GenerateUrl(imageName));
         }
 
-        public Task<int> CreateTranscodingJobAsync(string filename)
+        public async Task<int> CreateTranscodingJobAsync(string filename)
         {
             transcoder = new AmazonElasticTranscoderClient(Constants.AmazonS3AccessKey, Constants.AmazonS3SecretKey, RegionEndpoint.USEast1);
 
@@ -106,7 +108,7 @@ namespace LectioService.Services
             var ji = new JobInput
             {
                 AspectRatio = "auto",
-                Container = ext,
+                Container = "auto",
                 FrameRate = "auto",
                 Interlaced = "auto",
                 Resolution = "auto",
@@ -128,9 +130,11 @@ namespace LectioService.Services
                 PipelineId = "1413597383537-ioc01m"
             };
 
-            transcoder.CreateJob(createJob);
+            var response = await transcoder.CreateJobAsync(createJob);
 
-            return Task.FromResult(0);
+            var r = response;
+
+            return 0;
         }
 
         public Task<string> UploadImage(HttpPostedFileWrapper file, string filename, string containerName)
@@ -138,9 +142,18 @@ namespace LectioService.Services
             throw new NotImplementedException();
         }
 
-        public void Delete(string url)
+        public void Delete(string filename)
         {
-            throw new NotImplementedException();
+            using (client = new AmazonS3Client(Constants.AmazonS3AccessKey, Constants.AmazonS3SecretKey, RegionEndpoint.USEast1))
+            {
+                var delete = new DeleteObjectRequest
+                {
+                    Key = filename,
+                    BucketName = Constants.AmazonS3BucketName
+                };
+
+                var response = client.DeleteObject(delete);
+            }
         }
     }
 }

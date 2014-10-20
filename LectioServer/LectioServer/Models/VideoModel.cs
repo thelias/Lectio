@@ -13,6 +13,9 @@ namespace LectioServer.Models
 {
     public class VideoModel
     {
+        /// <summary>
+        /// the lecture id the video belongs to
+        /// </summary>
         [Required]
         public int LectureId { get; set; }
 

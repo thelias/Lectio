@@ -12,6 +12,9 @@ namespace LectioServer.Models
 {
     public class LectureModel
     {
+        /// <summary>
+        /// The name of the lecture to create
+        /// </summary>
         public string LectureName { get; set; }
 
     }

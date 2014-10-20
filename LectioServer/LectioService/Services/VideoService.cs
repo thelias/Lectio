@@ -42,6 +42,7 @@ namespace LectioService.Services
             if (lect.Videos == null || !lect.Videos.Any())
                 lect.Videos = new Collection<Video>();
             video.Thread = new Thread();
+            video.UserId = user.Id;
             lect.Videos.Add(video);
             _context.SaveChanges();
         }

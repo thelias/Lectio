@@ -15,6 +15,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -67,6 +68,7 @@ namespace LectioServer.Controllers.Api.V1
         [HttpPost]
         [AllowAnonymous]
         [Route("register")]
+        [ResponseType(typeof(string))]
         public async Task<IHttpActionResult> Register(RegisterModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -104,11 +106,15 @@ namespace LectioServer.Controllers.Api.V1
         [Route("confirmation")]
         public async Task<IHttpActionResult> Confirmation(ConfirmationModel model)
         {
-            await UserManager.ConfirmEmailAsync(model.UserId, model.ConfirmationToken);
-            var user = _context.Users.SingleOrDefault(x => x.UserName == User.Identity.Name);
+            var confirmationtoken = HttpUtility.UrlDecode(model.ConfirmationToken);
+            await UserManager.ConfirmEmailAsync(model.UserId, confirmationtoken);
+            var user = await UserManager.FindByIdAsync(model.UserId);
             if (user == null)
                 return InternalServerError(new Exception("User not found"));
-            var result = await UserManager.CreateAsync(user, model.Password);
+
+            var resetToken = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+            var result = await UserManager.ResetPasswordAsync(user.Id, resetToken, model.Password);
+
             if (result.Succeeded)
             {
                 return Ok("Please login.");
@@ -124,6 +130,7 @@ namespace LectioServer.Controllers.Api.V1
         [HttpPost]
         [Route("profileimage", Name = "profileimage")]
         [Authorize]
+        [ResponseType(typeof(ApplicationUser))]
         public async Task<IHttpActionResult> ProfileImage()
         {
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
@@ -157,6 +164,7 @@ namespace LectioServer.Controllers.Api.V1
         [AllowAnonymous]
         [HttpGet]
         [Route("confirmemail", Name = "confirmemail")]
+        [ResponseType(typeof(string))]
         public async Task<IHttpActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
@@ -181,6 +189,15 @@ namespace LectioServer.Controllers.Api.V1
                 AddErrors(result);
             }
             return BadRequest(ModelState);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("TestGetAllAccounts")]
+        public IHttpActionResult TestGetAllAccounts()
+        {
+            var users = _context.Users.ToList();
+            return Ok(users);
         }
 
 

@@ -497,5 +497,45 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="P:LectioServer.Models.ConfirmationModel.UserId">
+            <summary>
+            The user's id
+            </summary>
+        </member>
+        <member name="P:LectioServer.Models.ConfirmationModel.ConfirmationToken">
+            <summary>
+            The confirmation token
+            </summary>
+        </member>
+        <member name="P:LectioServer.Models.ConfirmationModel.Password">
+            <summary>
+            Must be at least 6 characters in length
+            </summary>
+        </member>
+        <member name="P:LectioServer.Models.ConfirmationModel.ConfirmPassword">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LectioServer.Models.CommentModel.VideoId">
+            <summary>
+            The id of the video the comment belongs to
+            </summary>
+        </member>
+        <member name="P:LectioServer.Models.CommentModel.CommentText">
+            <summary>
+            Comment text
+            </summary>
+        </member>
+        <member name="P:LectioServer.Models.LectureModel.LectureName">
+            <summary>
+            The name of the lecture to create
+            </summary>
+        </member>
+        <member name="P:LectioServer.Models.VideoModel.LectureId">
+            <summary>
+            the lecture id the video belongs to
+            </summary>
+        </member>
     </members>
 </doc>

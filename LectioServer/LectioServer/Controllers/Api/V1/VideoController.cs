@@ -11,8 +11,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using LectioServer.Models;
 using LectioService;
+using LectioService.Entities;
 using LectioService.Interfaces;
 using LectioService.Services;
 //using LectioTranscoder;
@@ -38,6 +40,7 @@ namespace LectioServer.Controllers.Api.V1
 
         [HttpGet]
         [Route("GetVideos")]
+        [ResponseType(typeof(List<Video>))]
         public IHttpActionResult GetVideos(int lectureid, int pg, int num)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
@@ -48,6 +51,7 @@ namespace LectioServer.Controllers.Api.V1
 
         [HttpGet]
         [Route("Getvideo")]
+        [ResponseType(typeof(Video))]
         public IHttpActionResult GetVideo(int videoid)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
@@ -57,7 +61,6 @@ namespace LectioServer.Controllers.Api.V1
 
         [HttpPost]
         [Route("UploadVideo")]
-        [AllowAnonymous]
         public async Task<IHttpActionResult> UploadVideo(VideoModel model)
         {
             var httpRequest = HttpContext.Current.Request;
@@ -108,7 +111,7 @@ namespace LectioServer.Controllers.Api.V1
 
             var filename = Constants.GenerateUrl("clipcanvas_14348_offline_199deb03-6202-4c28-a6c1-be5485fa134a.mp4");
 
-            await _amazonService.CreateTranscodingJobAsync(filename);
+            await _amazonService.CreateTranscodingJobAsync("clipcanvas_14348_offline_199deb03-6202-4c28-a6c1-be5485fa134a.mp4");
 
             return Ok();
         }

@@ -38,6 +38,7 @@ namespace LectioServer.Controllers.Api.V1
 
         [HttpGet]
         [Route("GetLecture")]
+        [ResponseType(typeof(Lecture))]
         public IHttpActionResult GetLecture(int lectureId)
         {
             var lecture = _lectureService.GetLecture(lectureId);
@@ -46,6 +47,7 @@ namespace LectioServer.Controllers.Api.V1
 
         [HttpGet]
         [Route("GetLectures")]
+        [ResponseType(typeof(List<Lecture>))]
         public IHttpActionResult GetLectures(int pg, int num)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);

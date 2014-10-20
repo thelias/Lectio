@@ -33,3 +33,5 @@ P:\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.Migr
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.csproj.GenerateResource.Cache
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.dll
 P:\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.pdb
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.csprojResolveAssemblyReference.cache
+P:\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.Migrations.updatedUserModel.resources

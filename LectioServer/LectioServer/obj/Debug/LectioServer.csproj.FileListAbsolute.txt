@@ -122,3 +122,5 @@ P:\Repositories\Lectio\LectioServer\LectioServer\bin\Microsoft.Data.OData.xml
 P:\Repositories\Lectio\LectioServer\LectioServer\bin\System.Spatial.xml
 P:\Repositories\Lectio\LectioServer\LectioServer\obj\Debug\LectioServer.dll
 P:\Repositories\Lectio\LectioServer\LectioServer\obj\Debug\LectioServer.pdb
+P:\Repositories\Lectio\LectioServer\LectioServer\bin\System.Web.Razor.dll
+P:\Repositories\Lectio\LectioServer\LectioServer\bin\System.Web.Razor.xml
