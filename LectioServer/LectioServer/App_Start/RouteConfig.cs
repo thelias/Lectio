@@ -15,7 +15,7 @@ namespace LectioServer.App_Start
             routes.MapRoute(
                 name: "Default",
                 url: "admin/{controller}/{action}/{id}",
-                defaults: new { action = "Index", id = UrlParameter.Optional }
+                defaults: new { action = "index", id = UrlParameter.Optional }
             );
         }
     }
