@@ -8,7 +8,7 @@
  * Controller of the helloApp
  */
 angular.module('helloApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, server) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -25,5 +25,8 @@ angular.module('helloApp')
             $("#vid").remove();
             $("#skip").remove();
             $(".header").css("opacity", 1);
+        };
+        $scope.login = function(){
+                   server.login('czifro', '8423 TIad');
         }
   });

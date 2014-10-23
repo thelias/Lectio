@@ -25,29 +25,7 @@ angular.module('helloApp')
             $("#AddCourseModal").modal('show');
         }
         $scope.addLecture = function() {
-            test();
         };
-        function test() {
-            var innerconfig = {
-                url: "/api/v1/accounts/TestGetAllAccounts",
-                method: "GET",
-                header:
-                {
-                      "Accept": 'text/json'
-                }
 
-            };
-            return $http(innerconfig).then(onSuccess, requestFailed)
-            function onSuccess(results) {
-                if (results && results.data) {
-                    alert(results.data);
-                }
-                return null;
-            }
-        }
-
-        function requestFailed(error) {
-            alert(JSON.stringify(error));
-        }
 
     });
