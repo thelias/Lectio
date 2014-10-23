@@ -56,8 +56,8 @@ namespace LectioServer.Controllers.Api.V1
         }
 
         [HttpPost]
-        [Route("AddLectures")]
-        public IHttpActionResult AddLectures(LectureModel model)
+        [Route("AddLecture")]
+        public IHttpActionResult AddLecture(LectureModel model)
         {
             var lecture = new Lecture {LectureName = model.LectureName};
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);

@@ -517,6 +517,16 @@
             
             </summary>
         </member>
+        <member name="P:LectioServer.Models.ResetPasswordModel.Password">
+            <summary>
+            Must be at least 6 characters in length
+            </summary>
+        </member>
+        <member name="P:LectioServer.Models.ResetPasswordModel.ConfirmPassword">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:LectioServer.Models.CommentModel.VideoId">
             <summary>
             The id of the video the comment belongs to

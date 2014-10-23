@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="Lectio-Web.config Connection String" description="Lectio Connection String used in web.config by the application to access the database." defaultValue="Data Source=md1dy5ub67.database.windows.net;Initial Catalog=Lectio;User ID=czifro@md1dy5ub67;Password=06GXh!gUu@vo;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="P:\\Repositories\\Lectio\\LectioServer\\LectioServer\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Lectio']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="\\\\psf\\Home\\Documents\\Developer_Data\\Repositories\\Lectio\\LectioServer\\LectioServer\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Lectio']/@connectionString" />
   </parameter>
 </parameters>
