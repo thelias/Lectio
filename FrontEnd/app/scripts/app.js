@@ -32,6 +32,9 @@ angular
         }).when('/course-page', {
             templateUrl: 'views/course-page.html',
             controller: 'CoursePageCtrl'
+        }).when('/video', {
+            templateUrl: 'views/video.html',
+            controller: 'VideoCtrl'
         }).when()
       .otherwise({
         redirectTo: '/'

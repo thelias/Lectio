@@ -1,0 +1,20 @@
+<h1>Nexus 6</h1>
+<iframe style="float:left; margin-right:40px;" width="600" height="400"
+        src="https://www.youtube.com/v/Gy8Md3Eky38">
+</iframe>
+<div class="container-narrow">
+<p>After watching Apple unapologetically release the gigantic iPhone 6 Plus and Samsung release the fourth iteration of its massive Galaxy Note, getting a 6-inch phone from Google seems almost par for the course. Huge phones are the new normal, but the Nexus 6 somehow manages to feel supersized even by today's surreal standards. The basic stats are already known: a Quad HD screen, a powerful Snapdragon 805 processor, a 13-megapixel camera, and a battery big enough to power it all. But the stats don't tell the real story. The real story is simple: this Motorola-made phone was code-named "Shamu," and it's entirely appropriate. Even in this age of big phones, the Nexus 6 is a whale.</p>
+<p>It looks very much like an oversized Moto X, with metal edges and a hard plastic back that actually feels pretty good, like a very hard and unbreakable eggshell. Like the Moto X, it has a curved back that adds a little more thickness than you may want in a phone this size — but that's likely a bigger problem for your pocket than it is for your hand. It actually feels really natural once you get used to the size. The edges are not exactly curved, but they're not too sharp either, so you can almost believe you can use this thing with one hand in a pinch. Almost.</p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div ng-repeat="comment in Comments" style="font-size:18px; width: 600px" class="row-fluid">
+    <div class="span6">{{comment.comment.desc}}</div>
+    <div class="span6">-{{comment.comment.name}}</div>
+    <br>
+</div>
+ <input style="width:600px;" ng-model="tempitem.comment.desc" class="form-control input-group"/>
+ <br>
+<button class="btn btn-success" ng-click="addComment(tempitem)">Add Comment</button>

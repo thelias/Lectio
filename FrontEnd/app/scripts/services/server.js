@@ -2,8 +2,7 @@
     var serviceID = "server";
     angular.module('helloApp').factory(serviceID, ['$http', datacontext]);
     function datacontext($http, $rootScope) {
-        var baseUrl = "http://lectioserver.azurewebsites.net";
-
+        var baseUrl = "http://lectioserver.azurewebsites.net/";
         var service =
         {
             addLecture: addLecture,
@@ -11,8 +10,8 @@
             register: register,
             confirmation: confirmation,
             getLectures: getLectures,
-            getLecture: getLecture
-
+            getLecture: getLecture,
+            getVideos: getVideos
         }
         return service;
 
@@ -24,11 +23,13 @@
                     username: username,
                     password: password,
                     grant_type: "password"
-                },
+               },
                 method: "POST",
-                headers:
+                 headers:
                 {
-                    'Accept': 'text/json'
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'token_type': 'bearer',
+                    'cache-control': 'no-cache'
                 }
             };
             return $http(innerconfig).then(onSuccess, requestFailed);
@@ -94,7 +95,7 @@
                 method: "GET",
                 headers:
                 {
-                    'Authentication': 'bearer ' + $rootScope.access_token
+                    //'Authentication': 'bearer ' + $rootScope.access_token
                 }
             };
             return $http(innerconfig).then(onSuccess, requestFailed);
@@ -115,7 +116,7 @@
                 method: "POST",
                 headers: {
                     'Accept': 'text/json',
-                    'Authentication': 'bearer ' + $rootScope.access_token
+                    //'Authentication': 'bearer ' + $rootScope.access_token
                 }
             }
         }
@@ -127,8 +128,8 @@
                 },
                 method: "POST",
                 headers: {
-                    'Accept': 'text/json',
-                    'Authentication': 'bearer ' + $rootScope.access_token
+                    'Accept': 'text/json'
+                    //'Authentication': 'bearer ' + $rootScope.access_token
                 }
             };
             return $http(innerconfig).then(onSuccess, requestFailed);
@@ -142,14 +143,14 @@
 
         function getVideos(lectureid) {
             var innerconfig = {
-                url: baseUrl + "/api/v1/videos/getVideos",
+                url: baseUrl + "/api/v1/accounts/TestGet",
                 param: {
                     lectureid: lectureid
                 },
                 method: "GET",
                 headers: {
-                    'Accept': 'text/json',
-                    'Authentication': 'bearer ' + $rootScope.access_token
+                    'Accept': 'text/json'
+                   // 'Authentication': 'bearer ' + $rootScope.access_token
                 }
             };
             return $http(innerconfig).then(onSuccess, requestFailed);
@@ -169,7 +170,7 @@
                 },
                 method: "GET",
                 headers: {
-                    'Authentication': 'bearer ' + $rootScope.access_token
+                   // 'Authentication': 'bearer ' + $rootScope.access_token
                 }
             };
             return $http(innerconfig).then(onSuccess, requestFailed);
@@ -192,7 +193,7 @@
                 formData: fd,
                 method: "POST",
                 headers: {
-                    'Authentication': 'bearer ' + $rootScope.access_token
+                  //  'Authentication': 'bearer ' + $rootScope.access_token
                 }
             };
             return $http(innerconfig).then(onSuccess, requestFailed);
@@ -212,7 +213,7 @@
                 },
                 method: "GET",
                 headers: {
-                    'Authentication': 'bearer ' + $rootScope.access_token
+                    //'Authentication': 'bearer ' + $rootScope.access_token
                 }
             };
             return $http(innerconfig).then(onSuccess, requestFailed);
@@ -232,7 +233,7 @@
                 },
                 method: "POST",
                 headers: {
-                    'Authentication': 'bearer ' + $rootScope.access_token
+                   // 'Authentication': 'bearer ' + $rootScope.access_token
                 }
             };
             return $http(innerconfig).then(onSuccess, requestFailed);
@@ -244,8 +245,9 @@
             }
         }
 
-        function requestFailed(error) {
+        function requestFailed(error, error_description) {
             alert(JSON.stringify(error));
+            alert(JSON.stringify(error_description))
 
 
 

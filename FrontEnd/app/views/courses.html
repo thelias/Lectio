@@ -1,6 +1,6 @@
-<h1 >Courses</h1>
+<h1 ng-init="init()" >Courses</h1>
             <div class="jumbotron">
-            <button ng-repeat="course in Courses" style="text-align: left"  class="form-control btn-default" ng-href="#/courses"> {{course.Course.name}} <div style="float:right;">{{course.Course.instructor}}</div></button>
+            <button ng-click="goHere()" ng-repeat="course in Courses" style="text-align: left"  class="form-control btn-default" ng-href="#/courses"> {{course.Course.name}} <div style="float:right;">{{course.Course.instructor}}</div></button>
                 <p></p>
             </div>
 <button class="btn btn-success" ng-click="openAddCourseModal()">Create a Course</button>
@@ -12,16 +12,14 @@
                 <h4 class="modal-title">Create Course</h4>
             </div>
             <div class="modal-body">
-                <input placeholder="Course Name" class="form-control put-group"/>
+                <input ng-model="tempitem.Course.name" placeholder="Course Name" class="form-control put-group"/>
                 <p></p>
-                <input placeholder="Course Number" class="form-control input-group"/>
-                <p></p>
-                <input placeholder="Course Instructor" class="form-control input-group"/>
+                <input ng-model="tempitem.Course.instructor" placeholder="Course Instructor" class="form-control input-group"/>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="addLecture()">Save</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addCourse(tempitem)">Save</button>
             </div>
         </div>
     </div>

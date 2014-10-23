@@ -1,9 +1,9 @@
-<button id="skip" style="position:relative; opacity: .5;" type="button" class="btn btn-success row col-md-offset-11 col-lg-1" ng-click="closeVideo()" >Skip</button>
-<div  class="jumbotron">
-    <h1>Welcome to Lectio</h1>
+<button id="skip" style="position:absolute;  opacity: .5;" type="button" class="btn btn-default row col-md-offset-11 col-lg-1" ng-click="closeVideo()" >Skip</button>
+<div class="jumbotron" style="opacity: .001;">
+    <h1 id="welcome">Welcome to Lectio</h1>
 
-    <p><a class="btn btn-lg btn-success" ng-click="openSignUpModal()">Sign Up</span></a></p>
-    <button class="btn btn-default" ng-click="openLoginModal()">Log in</button>
+    <p id="signUpBut"><a class="btn btn-lg btn-success" ng-click="openSignUpModal()">Sign Up</span></a></p>
+    <button id="loginBut" class="btn btn-default" ng-click="openLoginModal()">Log in</button>
     <div id="SignUpModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" ng-click="login()">Log In</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="login()">Log In</button>
                 </div>
             </div>
         </div>
