@@ -3,7 +3,15 @@
  */
 angular.module('helloApp')
     .controller('CoursePageCtrl', function ($scope, $location, server) {
-        $scope.Videos = [];
+        $scope.Videos = [
+            {
+                video:
+                {
+                    name: "Nexus"
+                }
+
+            }
+        ];
         $scope.id = 0;
         $scope.awesomeThings = [
             'HTML5 Boilerplate',

@@ -284,8 +284,7 @@
         }
                        //deals with failed requests
         function requestFailed(error, error_description) {
-            alert(JSON.stringify(error));
-            alert(JSON.stringify(error_description));
+            console.log(error)
         }
     }
 })();
