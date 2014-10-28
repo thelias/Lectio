@@ -29,7 +29,7 @@ angular
       }).when('/courses', {
             templateUrl: 'views/courses.html',
             controller: 'CoursesCtrl'
-        }).when('/course-page', {
+        }).when('/course-page/:id', {
             templateUrl: 'views/course-page.html',
             controller: 'CoursePageCtrl'
         }).when('/video', {

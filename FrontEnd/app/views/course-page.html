@@ -1,7 +1,7 @@
-<h1>Videos</h1>
+<h1 ng-init="init()">Videos</h1>
 <div class="jumbotron">
     <button ng-repeat="video in Videos" style="text-align: left" class="form-control btn-default" ng-click="goHere()">{{video.video.name}}
-        <div style="float:right;">{{video.video.date}}</div>
+        <div style="float:right;"></div>
     </button>
 </div>
 <button class="btn btn-success" ng-click="openUploadModal()">Add video</button>
@@ -38,9 +38,8 @@
             <div class="modal-body">
                 <input ng-model="tempitem.video.name" placeholder="Video Name" class="form-control put-group"/>
                 <p></p>
-                <input  placeholder="URL" class="form-control put-group"/>
+                <input  ng-model="tempitem.video.file" class="btn btn-default " type="file">
                 <p></p>
-                <input ng-model="tempitem.video.date" placeholder="Date" class="form-control input-group"/>
             </div>
         </div>
         <div class="modal-footer">

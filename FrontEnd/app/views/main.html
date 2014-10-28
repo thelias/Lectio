@@ -45,14 +45,14 @@
                     <h4 class="modal-title">Log In</h4>
                 </div>
                 <div class="modal-body">
-                    <input placeholder="Email" class="form-control input-group"/>
+                    <input placeholder="Email" class="form-control input-group" ng-model="temp.email"/>
 
                     <p></p>
-                    <input type="password" placeholder="Password" class="form-control input-group"/>
+                    <input type="password" placeholder="Password" class="form-control input-group" ng-model="temp.pass"/>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="login()">Log In</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="login(temp)">Log In</button>
                 </div>
             </div>
         </div>

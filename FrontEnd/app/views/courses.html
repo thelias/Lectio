@@ -1,8 +1,8 @@
 <h1 ng-init="init()" >Courses</h1>
-            <div class="jumbotron">
-            <button ng-click="goHere()" ng-repeat="course in Courses" style="text-align: left"  class="form-control btn-default" ng-href="#/courses"> {{course.Course.name}} <div style="float:right;">{{course.Course.instructor}}</div></button>
-                <p></p>
-            </div>
+<div class="jumbotron">
+    <button ng-click="goHere(course.Course.id)" ng-repeat="course in Courses" style="text-align: left"  class="form-control btn-default" ng-href="#/courses"> {{course.Course.name}} <div style="float:right;">{{course.Course.instructor}}</div></button>
+    <p></p>
+</div>
 <button class="btn btn-success" ng-click="openAddCourseModal()">Create a Course</button>
 <div id="AddCourseModal" class="modal fade">
     <div class="modal-dialog">
@@ -13,9 +13,8 @@
             </div>
             <div class="modal-body">
                 <input ng-model="tempitem.Course.name" placeholder="Course Name" class="form-control put-group"/>
-                <p></p>
-                <input ng-model="tempitem.Course.instructor" placeholder="Course Instructor" class="form-control input-group"/>
-
+                <!--<p></p>
+                <input ng-model="tempitem.Course.instructor" placeholder="Course Instructor" class="form-control input-group"/>-->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
