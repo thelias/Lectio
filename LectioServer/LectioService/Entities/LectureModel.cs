@@ -30,6 +30,13 @@ namespace LectioService.Entities
         [Display(Name = "Lecture Name")]
         public string LectureName { get; set; }
 
+        ///// <summary>
+        ///// Lecture Creator
+        ///// </summary>
+        //[ForeignKey("Creator")]
+        //public string CreatorId { get; set; }
+        //public ApplicationUser Creator { get; set; }
+
         [JsonIgnore]
         public virtual ICollection<ApplicationUser> Users { get; set; }
 

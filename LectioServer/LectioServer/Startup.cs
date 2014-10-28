@@ -12,7 +12,7 @@ namespace LectioServer
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            //Constants.LoadConstants(new LectioContext());
+            LectioService.Constants.LoadConstants(new LectioContext());
         }
     }
 }

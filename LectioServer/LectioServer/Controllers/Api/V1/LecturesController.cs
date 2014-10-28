@@ -15,6 +15,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using LectioServer.Models;
 using LectioService;
@@ -26,6 +27,7 @@ namespace LectioServer.Controllers.Api.V1
 {
     [Authorize]
     [RoutePrefix("api/v1/lectures")]
+    //[EnableCors("*",null,"*","*")]
     public class LecturesController : ApiController
     {
         private readonly LectioContext _context;
@@ -62,7 +64,7 @@ namespace LectioServer.Controllers.Api.V1
             var lecture = new Lecture {LectureName = model.LectureName};
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
             _lectureService.AddNewLecture(user, lecture);
-            return Ok();
+            return Ok("Added lecture");
         }
 
         [HttpDelete]
@@ -74,7 +76,7 @@ namespace LectioServer.Controllers.Api.V1
             if (lecture == null)
                 return NotFound();
             _lectureService.DeleteLecture(user, lecture);
-            return Ok();
+            return Ok("deleted lecture");
         }
 
         [HttpPut]
@@ -83,7 +85,7 @@ namespace LectioServer.Controllers.Api.V1
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
             _lectureService.UpdateLecture(user, lecture);
-            return Ok();
+            return Ok("updated lecture");
         }
     }
 }

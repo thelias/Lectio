@@ -192,3 +192,5 @@ P:\Repositories\Lectio\LectioServer\LectioServer\bin\System.Web.Razor.xml
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\obj\Debug\LectioServer.csprojResolveAssemblyReference.cache
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\obj\Debug\LectioServer.dll
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\obj\Debug\LectioServer.pdb
+\\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\bin\Microsoft.Owin.Cors.dll
+\\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\bin\Microsoft.Owin.Cors.xml

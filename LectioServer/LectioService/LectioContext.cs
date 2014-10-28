@@ -47,7 +47,9 @@ namespace LectioService
 
         public DbSet<Thread> Threads { get; set; }
 
-        public DbSet<Lecture> Lectures { get; set; } 
+        public DbSet<Lecture> Lectures { get; set; }
+
+        //public DbSet<Permission> Permissions { get; set; }
         
         #endregion
     }

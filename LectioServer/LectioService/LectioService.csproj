@@ -88,7 +88,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Entities\LectureModel.cs" />
     <Compile Include="Entities\CommentModel.cs" />
-    <Compile Include="Entities\ThreadModel.cs" />
+    <Compile Include="Entities\PermissionModel.cs" />
     <Compile Include="Entities\VideoModel.cs" />
     <Compile Include="Interfaces\IAmazonService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
@@ -116,6 +116,10 @@
     <Compile Include="Migrations\201410190546319_updatedUserModel.Designer.cs">
       <DependentUpon>201410190546319_updatedUserModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410280503104_updateModel.cs" />
+    <Compile Include="Migrations\201410280503104_updateModel.Designer.cs">
+      <DependentUpon>201410280503104_updateModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AmazonService.cs" />
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410190546319_updatedUserModel.resx">
       <DependentUpon>201410190546319_updatedUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410280503104_updateModel.resx">
+      <DependentUpon>201410280503104_updateModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

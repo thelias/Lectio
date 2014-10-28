@@ -1,6 +1,9 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Cors;
+using LectioServer.Filters;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security.DataHandler;
+using Microsoft.Owin.Security.OAuth;
 
 namespace LectioServer
 {
@@ -10,8 +13,9 @@ namespace LectioServer
         {
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(DefaultAuthenticationTypes.ExternalBearer)); // make sure this matches the auth type in 
+            //config.Filters.Add(new HostAuthenticationAttribute(OAuthDefaults.AuthenticationType));
             //config.Filters.Add(new NewRelicExceptionFilter());
-            //config.Filters.Add(new RequireWebApiHttpsAttribute());
+            //config.Filters.Add(new RequireWebApiHttpAttribute());
             //config.Filters.Add(new AuthorizeAttribute()); // this is not working, possibly becaues attribute routes
 
             config.MapHttpAttributeRoutes();
@@ -26,7 +30,8 @@ namespace LectioServer
             // For more information, visit http://go.microsoft.com/fwlink/?LinkId=279712.
             config.EnableQuerySupport();
 
-            config.EnableCors(new EnableCorsAttribute("http://localhost:9000", "*", "*"));
+            //config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            //config.EnableCors();
         }
     }
 }

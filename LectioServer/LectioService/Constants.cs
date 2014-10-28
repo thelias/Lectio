@@ -32,8 +32,8 @@ namespace LectioService
 
         public static void LoadConstants(LectioContext context)
         {
-            StudentRoleId = context.Roles.Single(r => r.Name == "Student").Id;
-            InstructorRoleId = context.Roles.Single(r => r.Name == "Instructor").Id;
+            //StudentRoleId = context.Roles.Single(r => r.Name == "Student").Id;
+            //InstructorRoleId = context.Roles.Single(r => r.Name == "Instructor").Id;
         }
     }
 }

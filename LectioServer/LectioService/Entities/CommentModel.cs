@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Authors:
+ * Jordanne Perry,
+ * Will Czifro,
+ * Ian Jones
+ */
+
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -47,5 +54,26 @@ namespace LectioService.Entities
         /// Comment Text
         /// </summary>
         public string CommentText { get; set; }
+
+        /// <summary>
+        /// Timestamp when comment was made
+        /// </summary>
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime TimeStamp { get; set; }
+    }
+
+    public class Thread
+    {
+        /// <summary>
+        /// Thread Id
+        /// </summary>
+        public int ThreadId { get; set; }
+
+        //[ForeignKey("Video")]
+        //public int VideoId { get; set; }
+        //public virtual Video Video { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Comment> Comments { get; set; }
     }
 }

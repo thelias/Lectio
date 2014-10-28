@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
@@ -32,11 +34,13 @@ namespace LectioServer.Controllers.Api.V1
 {
     [Authorize]
     [RoutePrefix("api/v1/accounts")]
+    //[EnableCors("http://localhost:9000", "*", "*")]
     public class AccountsController : ApiController
     {
         private const string UsersContainer = "users";
         private readonly LectioContext _context = new LectioContext();
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         private ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; set; }
 
         public AccountsController()
@@ -52,14 +56,14 @@ namespace LectioServer.Controllers.Api.V1
 
         private ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            set
-            {
-                _userManager = value;
-            }
+            get { return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+            set { _userManager = value; }
+        }
+
+        private ApplicationRoleManager RoleManager
+        {
+            get { return _roleManager ?? Request.GetOwinContext().Get<ApplicationRoleManager>(); }
+            set { _roleManager = value; }
         }
 
         //
@@ -67,16 +71,17 @@ namespace LectioServer.Controllers.Api.V1
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("register")]
+        [Route("InstructorRegistration")]
         [ResponseType(typeof(string))]
-        public async Task<IHttpActionResult> Register(RegisterModel model)
+        public async Task<IHttpActionResult> InstructorRegistration(RegisterModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var user = new ApplicationUser { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             await UserManager.CreateAsync(user);
+            await UserManager.AddUserToRolesAsync(user.Id, new[] {"Instructor"});
+
             var confirmationToken = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-            //await UserManager.ConfirmEmailAsync(user.Id, confirmationToken);
             var callbackUrl = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority;
             callbackUrl += "/#/accounts/confirmemail?userid=" + user.Id + "&code=";
             callbackUrl += HttpUtility.UrlEncode(confirmationToken);
@@ -227,8 +232,34 @@ namespace LectioServer.Controllers.Api.V1
         [Route("TestEndpoint")]
         public IHttpActionResult TestEndpoint()
         {
+            var httpRequest = HttpContext.Current;
+            var h = httpRequest;
             var url = Url.Request.RequestUri.Scheme + "://" + Request.RequestUri.Authority;
             return Ok(url);
+        }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("TestGetRoles")]
+        public async Task<IHttpActionResult> TestGotRoles()
+        {
+            var roleManager = Request.GetOwinContext().Get<ApplicationRoleManager>();
+
+            var roles = await roleManager.Roles.ToListAsync();
+
+            return Ok(roles);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("TestAddUserToRole")]
+        public async Task<IHttpActionResult> TestAddUserToRole(string username)
+        {
+            var user = new LectioContext().Users.Single(x => x.UserName == username);
+            var roles = new List<string> {"Instructor"};
+            var result = await UserManager.AddUserToRolesAsync(user.Id, roles);
+            return Ok();
         }
 
         //[HttpPost]

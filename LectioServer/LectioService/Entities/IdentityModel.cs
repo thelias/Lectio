@@ -44,13 +44,23 @@ namespace LectioService.Entities
         public string LastName { get; set; }
         [JsonIgnore]
         public string ProfileUrl { get; set; }
-        /// <summary>
-        /// User's Role, 1: Student, 2: Instructor
-        /// </summary>
+
         [ForeignKey("Role")]
         public string RoleId { get; set; }
-        [JsonIgnore]
         public virtual IdentityRole Role { get; set; }
+
+        /// <summary>
+        /// TimeStamp when user registered
+        /// </summary>
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //public DateTime Created { get; set; }
+
+        //[ForeignKey("Permission")]
+        //public int PermissionId { get; set; }
+        //public virtual Permission Permission { get; set; }
+
+        //[JsonIgnore]
+        //public virtual ICollection<Permission> Permissions { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Lecture> Lectures { get; set; }

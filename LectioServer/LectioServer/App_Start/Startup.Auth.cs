@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Web.Cors;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -50,6 +53,18 @@ namespace LectioServer
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
+            //var tokenCorsPolicy = GenerateCorsPolicy();
+
+            //app.UseCors(new CorsOptions
+            //{
+            //    PolicyProvider = new CorsPolicyProvider
+            //    {
+            //        PolicyResolver = request => Task.FromResult(GenerateCorsPolicy())
+            //    }
+            //});
+
+            app.UseCors(CorsOptions.AllowAll);
+
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
@@ -87,6 +102,21 @@ namespace LectioServer
 
             //app.UseGooglePlusAuthentication("92532468789-cf9s5veefdu2o8td3lok9vbqb7esbcr2.apps.googleusercontent.com", "OO-qvsiESiCOne9H6dfcq9oa");
             //app.UseGoogleAuthentication();
+        }
+
+        private static CorsPolicy GenerateCorsPolicy()
+        {
+            var corsPolicy = new CorsPolicy
+            {
+                AllowAnyHeader = true,
+                AllowAnyMethod = true
+            };
+
+            corsPolicy.Origins.Add("http://lectioserver.azurewebsites.com");
+            corsPolicy.Origins.Add("http://localhost:9000");
+            corsPolicy.Origins.Add("http://localhost:9500");
+
+            return corsPolicy;
         }
 
         //        private static bool IsAjaxRequest(IOwinRequest request)

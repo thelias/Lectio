@@ -72,3 +72,4 @@ P:\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.Migr
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.csproj.GenerateResource.Cache
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.dll
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.pdb
+\\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioService\obj\Release\LectioService.Migrations.updateModel.resources

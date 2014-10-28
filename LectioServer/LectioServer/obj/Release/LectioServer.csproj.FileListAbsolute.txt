@@ -133,3 +133,5 @@ P:\Repositories\Lectio\LectioServer\LectioServer\bin\XmlDocument.xml
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\bin\System.Web.Cors.dll
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\bin\System.Web.Http.Cors.dll
 \\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\bin\System.Web.Http.Cors.xml
+\\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\bin\Microsoft.Owin.Cors.dll
+\\psf\Home\Documents\Developer_Data\Repositories\Lectio\LectioServer\LectioServer\bin\Microsoft.Owin.Cors.xml
