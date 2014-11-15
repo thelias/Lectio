@@ -46,14 +46,14 @@ namespace LectioServer.Controllers.Api.V1
         }
 
         [HttpPost]
-        [Route("Uploadcomment")]
+        [Route("AddComment")]
         public IHttpActionResult AddComment(CommentModel model)
         {
             var user = _context.Users.Single(x => x.UserName == User.Identity.Name);
             var comment = new Comment { UserId = user.Id, CommentText = model.CommentText };
             var video = _videoService.GetVideo(user, model.VideoId);
             _commentService.AddNewComment(user, comment, video);
-            return Ok();
+            return Ok("Added Comment");
         }
     }
 }

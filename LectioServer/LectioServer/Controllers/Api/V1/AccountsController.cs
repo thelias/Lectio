@@ -223,7 +223,9 @@ namespace LectioServer.Controllers.Api.V1
         public IHttpActionResult TestGetAllAccounts()
         {
             var users = _context.Users.ToList();
-            return Ok(users);
+            var dictionary = new Dictionary<string, object>();
+            dictionary["users"] = users;
+            return Ok(dictionary);
         }
 
 

@@ -81,7 +81,7 @@ namespace LectioServer.Controllers.Api.V1
 
             _videoService.AddNewVideo(user, lecture, video);
 
-            return Ok();
+            return Ok("Processing video");
         }
 
         [HttpPost]
@@ -100,7 +100,7 @@ namespace LectioServer.Controllers.Api.V1
             //var transcoder = new Transcoder();
             //var r = await transcoder.TranscodeToMP4(file, file.FileName);
             //var rr = r;
-            return Ok();
+            return Ok("Testing Transcoder");
         }
 
         [HttpGet]
@@ -113,7 +113,7 @@ namespace LectioServer.Controllers.Api.V1
 
             await _amazonService.CreateTranscodingJobAsync("clipcanvas_14348_offline_199deb03-6202-4c28-a6c1-be5485fa134a.mp4");
 
-            return Ok();
+            return Ok("Testing Amazon Transcoder");
         }
     }
 }
